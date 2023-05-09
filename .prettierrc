@@ -1,0 +1,5 @@
+{
+  "singleQuote": true,
+  "space-before-function-paren": false,
+  "printWidth": 115
+}

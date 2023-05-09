@@ -1,0 +1,4733 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Korner Lamp REST API documentation.",
+    "title": "Korner Lamp API Documentation"
+  },
+  "host": "",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Admin",
+      "description": "Everything about Admin"
+    },
+    {
+      "name": "Member",
+      "description": "Everything about Members"
+    },
+    {
+      "name": "Measurement",
+      "description": "Everything about Measurement"
+    },
+    {
+      "name": "Category",
+      "description": "Everything about Category"
+    },
+    {
+      "name": "SubCategory",
+      "description": "Everything about Media"
+    },
+    {
+      "name": "Product",
+      "description": "Everything about Product"
+    },
+    {
+      "name": "ParentProduct",
+      "description": "Everything about Parent Product"
+    },
+    {
+      "name": "Notification",
+      "description": "Everything about Notification"
+    },
+    {
+      "name": "RewardRedeem",
+      "description": "Everything About Reward Redeem"
+    },
+    {
+      "name": "Reward",
+      "description": "Everything about Reward"
+    },
+    {
+      "name": "Feedback",
+      "description": "Everything about Feedback"
+    },
+    {
+      "name": "Scheme",
+      "description": "Everything about Scheme"
+    },
+    {
+      "name": "Slider",
+      "description": "Everything about Slider"
+    }
+  ],
+  "paths": {
+    "/Member": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Sign UP Member Account",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Valid Email of the Member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "first name of the Member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "referredCode",
+            "in": "formData",
+            "description": "Referred Code",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "description": "role of the member",
+            "required": true,
+            "type": "string",
+            "enum": ["retailer", "stockist", "distributor", "mr"]
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "phone number",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get Own Profile",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Profile"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Member"],
+        "summary": "Update Member Account",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Valid Email of the Member",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "first name of the Member",
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "phone with country code",
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "complete address",
+            "type": "string"
+          },
+          {
+            "name": "licenceDoc",
+            "in": "formData",
+            "description": "file path of licence",
+            "type": "string"
+          },
+          {
+            "name": "licence",
+            "in": "formData",
+            "description": "licence",
+            "type": "string"
+          },
+          {
+            "name": "gst",
+            "in": "formData",
+            "description": "gst",
+            "type": "string"
+          },
+          {
+            "name": "gstDoc",
+            "in": "formData",
+            "description": "gst doc file path",
+            "type": "string"
+          },
+          {
+            "name": "contactPerson",
+            "in": "formData",
+            "description": "contact person details in object with name and phone",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      }
+    },
+    "/Member/All": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get Members",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "type": "string"
+          },
+          {
+            "name": "excel",
+            "in": "query",
+            "description": "excel",
+            "type": "boolean"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "description": "role",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Members retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Member/{_id}": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get A Member",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Member Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Member retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Member/Login": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Login Member Account",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Valid Email of the Member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Password min 8 digit max 32",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      }
+    },
+    "/Member/UserLogin": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Login for users Account",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "Valid phone number of the Member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "otp",
+            "in": "formData",
+            "description": "otp",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      }
+    },
+    "/Member/User/Get/Otp": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "get otp for user login",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "Valid phone number of the Member",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      }
+    },
+    "/Member/ChangePassword": {
+      "put": {
+        "tags": ["Member"],
+        "summary": "Change Password",
+        "produces": ["application/xml,application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "oldPassword",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "newPassword",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password Changed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Password Did Not Match"
+          }
+        }
+      }
+    },
+    "/Member/ForgotPassword": {
+      "put": {
+        "tags": ["Member"],
+        "summary": "Send Forgot Password Email",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/xml,application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reset password link send please check your email"
+          },
+          "404": {
+            "description": "Wrong Email"
+          }
+        }
+      }
+    },
+    "/Member/ResetPassword": {
+      "put": {
+        "tags": ["Member"],
+        "summary": "Reset Password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/xml,application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password Reset!"
+          },
+          "401": {
+            "description": "Wrong Email"
+          }
+        }
+      }
+    },
+    "/Member/VerifyEmail": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Verify Email",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "formData",
+            "description": "token of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "memberId",
+            "in": "formData",
+            "description": "_id of the member",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/Member/ResendVerifyEmail": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Re-Send Verify Email",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email of the member",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found Email already VERIFIED"
+          },
+          "403": {
+            "description": "Email already VERIFIED"
+          },
+          "204": {
+            "description": "No Member Found"
+          },
+          "200": {
+            "description": "Email successfully send, please check your Mail"
+          }
+        }
+      }
+    },
+    "/Member/ResendVerifyNumber": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Re-Send Verify Email",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "phone of the member",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "403": {
+            "description": "Number already VERIFIED"
+          },
+          "204": {
+            "description": "No Member Found"
+          },
+          "200": {
+            "description": "Number successfully send"
+          }
+        }
+      }
+    },
+    "/Member/Address": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Add Address",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "address name or tag",
+            "type": "string"
+          },
+          {
+            "name": "line1",
+            "in": "formData",
+            "description": "address line 1",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "line2",
+            "in": "formData",
+            "description": "address line 2",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "location in form of object like location: {type: 'Point', coordinates:[lng, lat]}",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pincode",
+            "in": "formData",
+            "description": "pincode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "description": "address state",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "address city",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "isPrimary",
+            "in": "formData",
+            "description": "address city",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "403": {
+            "description": "Number already VERIFIED"
+          },
+          "204": {
+            "description": "No Member Found"
+          },
+          "200": {
+            "description": "Number successfully send"
+          }
+        }
+      }
+    },
+    "/Member/Approve/{memberId}": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Approve retailer mr account stockist account",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "_id of the member",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "403": {
+            "description": " already VERIFIED"
+          },
+          "204": {
+            "description": "No Member Found"
+          },
+          "200": {
+            "description": "Account Approved"
+          }
+        }
+      }
+    },
+    "/Member/Logout/{memberId}": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Logout Member Account",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "_id of the member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "deviceToken",
+            "in": "formData",
+            "description": "deviceToken of the member",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "403": {
+            "description": " already VERIFIED"
+          },
+          "204": {
+            "description": "No Member Found"
+          },
+          "200": {
+            "description": "Account Approved"
+          }
+        }
+      }
+    },
+    "/Member/Admin/DisableOrEnable": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "enable or disable member",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "action",
+            "in": "formData",
+            "description": "enable or disable",
+            "type": "string",
+            "enum": ["enable", "disable"]
+          },
+          {
+            "name": "memberId",
+            "in": "formData",
+            "description": "id of the member",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Profile"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/Member/Admin/Dashboard": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "dashboard data",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Profile"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/Member/Admin/Dashboard/Graph": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "dashboard data",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Profile"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "204": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/Member/Mr/Retailer": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Create Retailer",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Valid Email of the Member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "first name of the Member",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "referredCode",
+            "in": "formData",
+            "description": "Referred Code",
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "phone number",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Member"],
+        "summary": "get own Retailer",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Login successful"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "wrong data"
+          }
+        }
+      }
+    },
+    "/Measurement": {
+      "post": {
+        "tags": ["Measurement"],
+        "summary": "Create Measurement",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Measurement",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "slug",
+            "in": "formData",
+            "description": "Slug Of Measurement",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Measurement created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Measurement"],
+        "summary": "Get Measurements",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Measurement retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Measurement/{_id}": {
+      "get": {
+        "tags": ["Measurement"],
+        "summary": "Get A Measurement",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Measurement Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Measurement retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Measurement"],
+        "summary": "Delete Measurements",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Measurement Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Measurement deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Measurement"],
+        "summary": "Update A Measurement",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Measurement Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Measurement",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "slug",
+            "in": "formData",
+            "description": "Slug Of Measurement",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Measurement edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Category": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Create Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "tags",
+            "in": "formData",
+            "description": "Tags",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "order",
+            "in": "formData",
+            "description": "Order",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "visible",
+            "in": "formData",
+            "description": "Visible",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Category"],
+        "summary": "Get Categories",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Category/BulkUpload": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "bulk upload product",
+        "produces": ["application/json"],
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "name": "files",
+            "in": "formData",
+            "description": "file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      }
+    },
+    "/Category/{_id}": {
+      "get": {
+        "tags": ["Category"],
+        "summary": "Get A Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Category Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Category"],
+        "summary": "Delete Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Cateory To Be Deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Category"],
+        "summary": "Update A Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Category Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "tags",
+            "in": "formData",
+            "description": "Tags",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "order",
+            "in": "formData",
+            "description": "Order",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "visible",
+            "in": "formData",
+            "description": "Visible",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/SubCategory": {
+      "post": {
+        "tags": ["SubCategory"],
+        "summary": "Create Sub Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Sub Category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "tags",
+            "in": "formData",
+            "description": "Tags",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "order",
+            "in": "formData",
+            "description": "Order",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "visible",
+            "in": "formData",
+            "description": "Visible",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "parent",
+            "in": "formData",
+            "description": "Parent Category",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Sub Category created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["SubCategory"],
+        "summary": "Get Sub Categories",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Sub Category retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/SubCategory/{_id}": {
+      "get": {
+        "tags": ["SubCategory"],
+        "summary": "Get A Sub Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Sub Category Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "SUb Category retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["SubCategory"],
+        "summary": "Delete Sub Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Cateory To Be Deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Sub Category deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["SubCategory"],
+        "summary": "Update A Sub Category",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of SUb Category Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Sub Category",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "tags",
+            "in": "formData",
+            "description": "Tags",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "order",
+            "in": "formData",
+            "description": "Order",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "visible",
+            "in": "formData",
+            "description": "Visible",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "parent",
+            "in": "formData",
+            "description": "Parent Category",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Sub Category edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/ParentProduct": {
+      "post": {
+        "tags": ["ParentProduct"],
+        "summary": "Create Parent Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Parent Product",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "category",
+            "in": "formData",
+            "description": "Category",
+            "required": true,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "subCategory",
+            "in": "formData",
+            "description": "Sub Category",
+            "required": true,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "primaryProduct",
+            "in": "formData",
+            "description": "Primary Product",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "spellingMistakes",
+            "in": "formData",
+            "description": "Spelling Mistakes",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "competitorNames",
+            "in": "formData",
+            "description": "Competitor Names",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "salts",
+            "in": "formData",
+            "description": "Salts",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "products",
+            "in": "formData",
+            "description": "Products",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Parent Product created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["ParentProduct"],
+        "summary": "Get Parent Products",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "category",
+            "type": "string"
+          },
+          {
+            "name": "subCategory",
+            "in": "query",
+            "description": "Sub-Category",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Parent Products retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/ParentProduct/{_id}": {
+      "get": {
+        "tags": ["ParentProduct"],
+        "summary": "Get A Parent Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Parent Product Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Parent Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["ParentProduct"],
+        "summary": "Delete Parent Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Parent Product To Be Deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Parent Product deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["ParentProduct"],
+        "summary": "Update A Parent Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Parent Product Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Parent Product",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "category",
+            "in": "formData",
+            "description": "Category",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "subCategory",
+            "in": "formData",
+            "description": "Sub Category",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "primaryProduct",
+            "in": "formData",
+            "description": "Primary Product",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Description",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "spellingMistakes",
+            "in": "formData",
+            "description": "Spelling Mistakes",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "competitorNames",
+            "in": "formData",
+            "description": "Competitor Names",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "salts",
+            "in": "formData",
+            "description": "Salts",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "products",
+            "in": "formData",
+            "description": "Products",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Parent Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/ParentProduct/Upload/Images": {
+      "post": {
+        "tags": ["ParentProduct"],
+        "summary": "upload Images",
+        "produces": ["application/json"],
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "image of the product ",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Data IS Invalid"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "403": {
+            "description": "Number already VERIFIED"
+          },
+          "204": {
+            "description": "No Member Found"
+          },
+          "200": {
+            "description": "Number successfully send"
+          }
+        }
+      }
+    },
+    "/Product": {
+      "post": {
+        "tags": ["Product"],
+        "summary": "Create Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Product",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "packagingSize",
+            "in": "formData",
+            "description": "Packaging Size",
+            "required": false,
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          {
+            "name": "measuringUnit",
+            "in": "formData",
+            "description": "Measuring Unit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "images",
+            "in": "formData",
+            "description": "images array",
+            "type": "string"
+          },
+          {
+            "name": "dosageSize",
+            "in": "formData",
+            "description": "Dosage Size",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "inStockQuantity",
+            "in": "formData",
+            "description": "In Stock Quantity",
+            "type": "number"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "description": "Price",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "pieces",
+            "in": "formData",
+            "description": "Pieces",
+            "type": "number"
+          },
+          {
+            "name": "visible",
+            "in": "formData",
+            "description": "Visible",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "isPrimary",
+            "in": "formData",
+            "description": "Is Primary?",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "parentProduct",
+            "in": "formData",
+            "description": "Parent Product",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Product"],
+        "summary": "Get Products",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Products retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Product/{_id}": {
+      "get": {
+        "tags": ["Product"],
+        "summary": "Get A Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Product Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "images",
+            "in": "formData",
+            "description": "images array",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Product"],
+        "summary": "Parent Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Parent Product To Be Deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Product"],
+        "summary": "Update A Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Product Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Product",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "packagingSize",
+            "in": "formData",
+            "description": "Packaging Size",
+            "required": false,
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          {
+            "name": "measuringUnit",
+            "in": "formData",
+            "description": "Measuring Unit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dosageSize",
+            "in": "formData",
+            "description": "Dosage Size",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "inStockQuantity",
+            "in": "formData",
+            "description": "In Stock Quantity",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "description": "Price",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "pieces",
+            "in": "formData",
+            "description": "Pieces",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "visible",
+            "in": "formData",
+            "description": "Visible",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "isPrimary",
+            "in": "formData",
+            "description": "Is Primary?",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "parentProduct",
+            "in": "formData",
+            "description": "Parent Product",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Cart": {
+      "get": {
+        "tags": ["Cart"],
+        "summary": "Get Cart",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "promoCodeCoupon",
+            "in": "query",
+            "description": "promoCodeCoupon name",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cart"],
+        "summary": "Empty whole cart",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "post": {
+        "tags": ["Cart"],
+        "summary": "Add product in Cart",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "formData",
+            "description": "_Id Of Product Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "packagingSize",
+            "in": "formData",
+            "description": "packaging size",
+            "type": "string"
+          },
+          {
+            "name": "quantity",
+            "in": "formData",
+            "description": "quantity of the product",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Cart/{productId}": {
+      "delete": {
+        "tags": ["Cart"],
+        "summary": "Add product in Cart",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "_Id Of Product Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "description": "quantity of the product",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "Get orders",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "excel",
+            "in": "query",
+            "description": "excel",
+            "type": "boolean"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "order startDate",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "order endDate",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search on orderId, memberName and userId depend on role",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "order status",
+            "type": "string",
+            "enum": ["PLACED", "ACCEPTED", "CONFIRMED", "SHIPPED", "PAYMENT_CONFIRMED"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "post": {
+        "tags": ["Order"],
+        "summary": "Create Order From Cart",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "query",
+            "description": "id of the address",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "notes",
+            "in": "formData",
+            "description": "notes in array",
+            "type": "string"
+          },
+          {
+            "name": "promoCodeCoupon",
+            "in": "formData",
+            "description": "promoCodeCoupon name",
+            "type": "string"
+          },
+          {
+            "name": "paymentMethod",
+            "in": "formData",
+            "description": "promoCodeCoupon name",
+            "type": "string",
+            "enum": ["COD", "ONLINE"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/{orderId}": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "Get order by id",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "id of the order",
+            "required": true,
+            "type": "String"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Order"],
+        "summary": "Update order items only",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "id of the order",
+            "required": true,
+            "type": "String"
+          },
+          {
+            "name": "items",
+            "in": "formData",
+            "description": "items",
+            "type": "array",
+            "items": {
+              "type": "String"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/Accept/{orderId}": {
+      "put": {
+        "tags": ["Order"],
+        "summary": "For Stockist Only",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "id of the order",
+            "required": true,
+            "type": "String"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/Confirm/{orderId}": {
+      "put": {
+        "tags": ["Order"],
+        "summary": "For Retailer Only",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "id of the order",
+            "required": true,
+            "type": "String"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "status",
+            "required": true,
+            "type": "String",
+            "enum": ["CONFIRMED", "CANCELLED"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/UploadBill/{orderId}": {
+      "put": {
+        "tags": ["Order"],
+        "summary": "Upload Bill",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "id of the order",
+            "required": true,
+            "type": "String"
+          },
+          {
+            "name": "bill",
+            "in": "path",
+            "description": "file path",
+            "required": true,
+            "type": "String"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/ApproveBill/{orderId}": {
+      "put": {
+        "tags": ["Order"],
+        "summary": "Approve Bill only for admin",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "id of the order",
+            "required": true,
+            "type": "String"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/PastOrders": {
+      "get": {
+        "tags": ["Order"],
+        "summary": "Get all past orders",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "order startDate",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "order endDate",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search on orderId, memberName and userId depend on role",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "order status",
+            "type": "string",
+            "enum": ["DELIVERED", "PENDING", "CANCELLED", "RETURN", "INCOMPLETE"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/GetById/{memberId}": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get all past orders",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "required": true,
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "order startDate",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "order endDate",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search on orderId, memberName and userId depend on role",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "order status",
+            "type": "string",
+            "enum": [
+              "PLACED",
+              "ACCEPTED",
+              "REJECTED",
+              "CONFIRMED",
+              "DELIVERED",
+              "SHIPPED",
+              "PENDING",
+              "CANCELLED",
+              "RETURN",
+              "INCOMPLETE"
+            ]
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "description": "order type",
+            "type": "string",
+            "enum": ["PAST", "CURRENT"]
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "description": "member role",
+            "type": "string",
+            "enum": ["stockist", "retailer"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Order/Admin/GetByCard": {
+      "get": {
+        "tags": ["Admin"],
+        "summary": "Get all orders for card",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "order startDate",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "order endDate",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search on orderId, memberName and userId depend on role",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "order status",
+            "type": "string",
+            "enum": [
+              "PLACED",
+              "ACCEPTED",
+              "REJECTED",
+              "CONFIRMED",
+              "DELIVERED",
+              "SHIPPED",
+              "PENDING",
+              "CANCELLED",
+              "RETURN",
+              "INCOMPLETE",
+              "PAYMENT_CONFIRMED"
+            ]
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "description": "member role REQUIRED IN CASE OF SEARCH",
+            "type": "string",
+            "enum": ["stockist", "retailer"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Discount": {
+      "post": {
+        "tags": ["Discount"],
+        "summary": "Create Product",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Discount",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productIds",
+            "in": "formData",
+            "description": "array of product ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "parentProductIds",
+            "in": "formData",
+            "description": "array of Parent Product ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "categoryIds",
+            "in": "formData",
+            "description": "array of category ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "subCategoryIds",
+            "in": "formData",
+            "description": "array of sub-category ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "percentage",
+            "in": "formData",
+            "description": "percentage",
+            "type": "number"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "description": "amount",
+            "type": "number"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Discount"],
+        "summary": "Get Discount",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Products retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Discount/{discountId}": {
+      "post": {
+        "tags": ["Discount"],
+        "summary": "update Discount",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "discountId",
+            "in": "path",
+            "required": true,
+            "description": "_id Of Discount",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Discount",
+            "type": "string"
+          },
+          {
+            "name": "productIds",
+            "in": "formData",
+            "description": "array of product ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "parentProductIds",
+            "in": "formData",
+            "description": "array of Parent Product ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "categoryIds",
+            "in": "formData",
+            "description": "array of category ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "subCategoryIds",
+            "in": "formData",
+            "description": "array of sub-category ids",
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          {
+            "name": "percentage",
+            "in": "formData",
+            "description": "percentage",
+            "type": "number"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "description": "amount",
+            "type": "number"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt",
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Product created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Discount"],
+        "summary": "Get Discount",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "discountId",
+            "in": "path",
+            "required": true,
+            "description": "_id Of Discount",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Products retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Discount"],
+        "summary": "delete Discount",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "discountId",
+            "in": "path",
+            "required": true,
+            "description": "_id Of Discount",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Products retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Scheme": {
+      "post": {
+        "tags": ["Scheme"],
+        "summary": "Create Scheme",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Scheme",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "Type Of Scheme",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "Points Multiplier",
+              "Couple Discounts",
+              "Points Added",
+              "Overall Free",
+              "Quantity Discount",
+              "One Rupee",
+              "First User",
+              "Reward on amount"
+            ]
+          },
+          {
+            "name": "productId",
+            "in": "formData",
+            "description": "Product id",
+            "type": "string"
+          },
+          {
+            "name": "relatedProductId",
+            "in": "formData",
+            "description": "Related Product id",
+            "type": "string"
+          },
+          {
+            "name": "pointTimes",
+            "in": "formData",
+            "description": "pointTimes",
+            "type": "number"
+          },
+          {
+            "name": "requiredQuantity",
+            "in": "formData",
+            "description": "Required Quantity",
+            "type": "number"
+          },
+          {
+            "name": "additionalPoints",
+            "in": "formData",
+            "description": "Additional Points",
+            "type": "number"
+          },
+          {
+            "name": "requiredAmount",
+            "in": "formData",
+            "description": "Required Amount",
+            "type": "number"
+          },
+          {
+            "name": "discountPercentage",
+            "in": "formData",
+            "description": "Discount Percentage",
+            "type": "number"
+          },
+          {
+            "name": "discountAmount",
+            "in": "formData",
+            "description": "Discount Amount",
+            "type": "number"
+          },
+          {
+            "name": "users",
+            "in": "formData",
+            "description": "Max Users",
+            "type": "number"
+          },
+          {
+            "name": "tagLine",
+            "in": "formData",
+            "description": "tagLine  of the scheme",
+            "type": "number"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "description of the scheme",
+            "type": "number"
+          },
+          {
+            "name": "images",
+            "in": "formData",
+            "description": "images",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "displayedAt",
+            "in": "formData",
+            "description": "displayedAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Scheme created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Scheme"],
+        "summary": "Get Schemes",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Schemes retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Scheme/{_id}": {
+      "get": {
+        "tags": ["Scheme"],
+        "summary": "Get A Scheme",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Scheme Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Scheme retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Scheme"],
+        "summary": "Delete Scheme",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Scheme to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Scheme deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Scheme"],
+        "summary": "Update A Scheme",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Scheme to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Name Of Scheme",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "Type Of Scheme",
+            "type": "string",
+            "enum": [
+              "Points Multiplier",
+              "Couple Discounts",
+              "Points Added",
+              "Overall Free",
+              "Quantity Discount",
+              "One Rupee",
+              "First User",
+              "Reward on amount"
+            ]
+          },
+          {
+            "name": "productId",
+            "in": "formData",
+            "description": "Product id",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "name": "relatedProductId",
+            "in": "formData",
+            "description": "Related Product id",
+            "type": "string"
+          },
+          {
+            "name": "tagLine",
+            "in": "formData",
+            "description": "tagLine  of the scheme",
+            "type": "number"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "description of the scheme",
+            "type": "number"
+          },
+          {
+            "name": "pointTimes",
+            "in": "formData",
+            "description": "pointTimes",
+            "type": "number"
+          },
+          {
+            "name": "requiredQuantity",
+            "in": "formData",
+            "description": "Required Quantity",
+            "type": "number"
+          },
+          {
+            "name": "additionalPoints",
+            "in": "formData",
+            "description": "Additional Points",
+            "type": "number"
+          },
+          {
+            "name": "requiredAmount",
+            "in": "formData",
+            "description": "Required Amount",
+            "type": "number"
+          },
+          {
+            "name": "discountPercentage",
+            "in": "formData",
+            "description": "Discount Percentage",
+            "type": "number"
+          },
+          {
+            "name": "discountAmount",
+            "in": "formData",
+            "description": "Discount Amount",
+            "type": "number"
+          },
+          {
+            "name": "users",
+            "in": "formData",
+            "description": "Max Users",
+            "type": "number"
+          },
+          {
+            "name": "images",
+            "in": "formData",
+            "description": "images",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "displayedAt",
+            "in": "formData",
+            "description": "displayedAt",
+            "type": "string"
+          },
+          {
+            "name": "descriptionImage",
+            "in": "formData",
+            "description": "Description Image",
+            "type": "string"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt",
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Scheme edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Notification": {
+      "post": {
+        "tags": ["Notification"],
+        "summary": "Create Notification",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "notificationData",
+            "in": "formData",
+            "description": "Notification Data",
+            "required": true,
+            "type": "object"
+          },
+          {
+            "name": "users",
+            "in": "formData",
+            "description": "users",
+            "required": false,
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Category created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Notification"],
+        "summary": "Get Notification",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Notification retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/RewardRedeem": {
+      "post": {
+        "tags": ["RewardRedeem"],
+        "summary": "Reward Request",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "reward",
+            "in": "formData",
+            "description": "Reward",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Request created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["RewardRedeem"],
+        "summary": "Get Redeemed Rewards",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page number",
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "orderby or sortBy",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Notification retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/RewardRedeem/{_id}": {
+      "put": {
+        "tags": ["RewardRedeem"],
+        "summary": "Update A Reward",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Reward Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Status",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Request Reviewed successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Reward": {
+      "post": {
+        "tags": ["Reward"],
+        "summary": "Create Reward",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Title Of Reward",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Description Of Reward",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "description": "Role Of Reward",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "points",
+            "in": "formData",
+            "description": "Points Of Reward",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "images",
+            "in": "formData",
+            "description": "Image Of Reward",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Reward created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Reward"],
+        "summary": "Get Measurements",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Reward retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Reward/{_id}": {
+      "get": {
+        "tags": ["Reward"],
+        "summary": "Get A Reward",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Reward Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Reward retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Reward"],
+        "summary": "Delete Rewards",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Reward Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Reward deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Reward"],
+        "summary": "Update A Reward",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Reward Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Title Of Reward",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Description Of Reward",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "description": "Role Of Reward",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "points",
+            "in": "formData",
+            "description": "Points Of Reward",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "images",
+            "in": "formData",
+            "description": "Image Of Reward",
+            "required": false,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Reward edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Feedback": {
+      "post": {
+        "tags": ["Feedback"],
+        "summary": "Create Feedback",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Title Of Feedback",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "in": "formData",
+            "description": "Message Of Feedback",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Feedback created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Feedback"],
+        "summary": "Get Feedbacks",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Feedback retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Feedback/{_id}": {
+      "get": {
+        "tags": ["Feedback"],
+        "summary": "Get A Feedback",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Feedback Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Feedback retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Feedback"],
+        "summary": "Delete Feedbacks",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Feedback Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Feedback deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Feedback"],
+        "summary": "Update A Feedback",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Feedback Needed",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Title Of Feedback",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "in": "formData",
+            "description": "Message Of Feedback",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "feedback edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Banner": {
+      "post": {
+        "tags": ["Banner"],
+        "summary": "Create Banner",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Image",
+            "required": true,
+            "type": "object"
+          },
+          {
+            "name": "order",
+            "in": "formData",
+            "description": "Order ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "Type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productId",
+            "in": "formData",
+            "description": "product id",
+            "type": "string"
+          },
+          {
+            "name": "parentProductIds",
+            "in": "formData",
+            "description": "Parent Product id",
+            "type": "string"
+          },
+          {
+            "name": "categoryIds",
+            "in": "formData",
+            "description": "category id",
+            "type": "string"
+          },
+          {
+            "name": "subCategoryIds",
+            "in": "formData",
+            "description": "sub-category id",
+            "type": "string"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "color",
+            "in": "formData",
+            "description": "color code",
+            "type": "string"
+          },
+          {
+            "name": "useFor",
+            "in": "formData",
+            "description": "is will decide where to show this slider",
+            "type": "string",
+            "enum": ["TOP", "SLIDER"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Slider"],
+        "summary": "Get Sliders",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Banner/{_id}": {
+      "get": {
+        "tags": ["Banner"],
+        "summary": "Get A Slider",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Slider Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Banner"],
+        "summary": "Delete Sliders",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Slider Needed",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider deleted successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Banner"],
+        "summary": "Update A Slider",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Id Of Slider Needed",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Slider",
+            "type": "object"
+          },
+          {
+            "name": "order",
+            "in": "formData",
+            "description": "Order ID",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "Type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productId",
+            "in": "formData",
+            "description": "product id",
+            "type": "string"
+          },
+          {
+            "name": "parentProductId",
+            "in": "formData",
+            "description": "Parent Product id",
+            "type": "string"
+          },
+          {
+            "name": "categoryId",
+            "in": "formData",
+            "description": "category id",
+            "type": "string"
+          },
+          {
+            "name": "subCategoryId",
+            "in": "formData",
+            "description": "sub-category id",
+            "type": "string"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "color",
+            "in": "formData",
+            "description": "color code",
+            "type": "string"
+          },
+          {
+            "name": "useFor",
+            "in": "formData",
+            "description": "is will decide where to show this slider",
+            "type": "string",
+            "enum": ["TOP", "SLIDER"]
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider edited successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/PromoCode": {
+      "post": {
+        "tags": ["Promo Code"],
+        "summary": "Create Promo Code",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "name of promo code it should be unique",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "percentage",
+            "in": "formData",
+            "description": "percentage",
+            "type": "number"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "description": "amount",
+            "type": "number"
+          },
+          {
+            "name": "maxDiscount",
+            "in": "formData",
+            "description": "max discount that can be apply on the cart also it is required in cases of percentage",
+            "type": "number"
+          },
+          {
+            "name": "minAmount",
+            "in": "formData",
+            "description": "Min Amount that is required to apply this promo",
+            "type": "number"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt, should not be date of past",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt also should not be in past",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Promo Code"],
+        "summary": "Get Promo Code",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/PromoCode/{promoCodeId}": {
+      "put": {
+        "tags": ["Promo Code"],
+        "summary": "Create Promo Code",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "promoCodeId",
+            "in": "formData",
+            "description": "_id of the promo code",
+            "required": true,
+            "type": "path"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "name of promo code it should be unique",
+            "type": "string"
+          },
+          {
+            "name": "percentage",
+            "in": "formData",
+            "description": "percentage",
+            "type": "number"
+          },
+          {
+            "name": "amount",
+            "in": "formData",
+            "description": "amount",
+            "type": "number"
+          },
+          {
+            "name": "maxDiscount",
+            "in": "formData",
+            "description": "max discount that can be apply on the cart",
+            "type": "number"
+          },
+          {
+            "name": "minAmount",
+            "in": "formData",
+            "description": "Min Amount that is required to apply this promo",
+            "type": "number"
+          },
+          {
+            "name": "activatedAt",
+            "in": "formData",
+            "description": "activatedAt, should not be date of past",
+            "type": "string"
+          },
+          {
+            "name": "expiredAt",
+            "in": "formData",
+            "description": "expiredAt also should not be in past",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider created successfully."
+          },
+          "500": {
+            "description": "System error."
+          },
+          "11000": {
+            "description": "Duplicate error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Promo Code"],
+        "summary": "Get Promo Code by _id",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/PromoCode/Check/NameAvailability": {
+      "get": {
+        "tags": ["Promo Code"],
+        "summary": "check Name Availability",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Slider retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    },
+    "/Payment/{orderId}": {
+      "post": {
+        "tags": ["Payment"],
+        "summary": "Create Payment",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "_id or the order",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "payment created successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      },
+      "get": {
+        "tags": ["Payment"],
+        "summary": "Capture Payment",
+        "produces": ["application/json"],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "_id or the order",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "payment retrived successfully."
+          },
+          "500": {
+            "description": "System error."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Member": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string", "maxlength": 255 },
+        "username": { "type": "string", "maxlength": 255 },
+        "password": { "type": "string", "maxLength": 255 },
+        "name": { "type": "string", "maxLength": 255 },
+        "email": { "type": "string", "maxLength": 255 },
+        "emailStatus": { "type": "string", "enum": ["pending", "changed", "VERIFIED"] },
+        "otp": { "type": "string", "maxLength": 255 },
+        "otpExpiresAt": { "type": "string", "format": "string" },
+        "fbId": { "type": "string", "maxLength": 255 },
+        "googleId": { "type": "string", "maxLength": 255 },
+        "phone": { "type": "string", "maxLength": 255 },
+        "status": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "password"]
+    },
+    "Measurement": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "String", "maxlength": 255 },
+        "slug": { "type": "String", "maxlength": 255 }
+      },
+      "required": ["name", "slug"]
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "String", "unique": true },
+        "image": { "type": " mongoose.Schema.Types.Mixed" },
+        "tags": [{ "type": "String" }],
+        "order": { "type": "Number" },
+        "visible": { "type": "Boolean", "default": true }
+      },
+      "required": ["name"]
+    },
+    "Sub-Category": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "String", "unique": true },
+        "image": { "type": " mongoose.Schema.Types.Mixed" },
+        "tags": [{ "type": "String" }],
+        "order": { "type": "Number" },
+        "parent": { "type": "mongoose.Schema.Types.ObjectId", "ref": "category" },
+        "visible": { "type": "Boolean", "default": true }
+      },
+      "required": ["name"]
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "String" },
+        "measuringUnit": { "type": "String" },
+        "inStockQuantity": { "type": "Number", "default": 10000 },
+        "visible": { "type": "Boolean", "default": true },
+        "parentProduct": { "type": "Schema.Types.ObjectId", "ref": "parentProduct" },
+        "isPrimary": { "type": "Boolean", "default": false },
+        "points": { "type": "Number" },
+        "price": { "type": "Number" },
+        "dosageSize": { "type": "String" },
+        "description": { "type": "String" },
+        "packagingSize": [{ "type": "Number" }],
+        "pieces": { "type": "Number" }
+      },
+      "required": [
+        "name",
+        "price",
+        "pieces",
+        "packagingSize",
+        "description",
+        "dosageSize",
+        "inStockQuantity",
+        "measuringUnit"
+      ]
+    },
+    "Parent Product": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "String", "unique": true },
+        "category": [{ "type": "Schema.Types.ObjectId", "ref": "category" }],
+        "subCategory": [{ "type": "Schema.Types.ObjectId", "ref": "sub-category" }],
+        "products": [{ "type": "Schema.Types.ObjectId", "ref": "product" }],
+        "image": { "type": "mongoose.Schema.Types.Mixed" },
+        "description": { "type": "String" },
+        "primaryProduct": { "type": "Schema.Types.ObjectId", "ref": "product" },
+        "spellingMistakes": [{ "type": "String" }],
+        "competitorNames": [{ "type": "String" }],
+        "salts": [{ "type": "String" }]
+      },
+      "required": ["name"]
+    },
+    "Cart": {
+      "type": "object",
+      "properties": {
+        "productId": { "type": "Schema.Types.ObjectId", "ref": "Product" },
+        "dosageId": { "type": "string" },
+        "memberId": { "type": "Schema.Types.ObjectId", "ref": "Member" },
+        "amount": { "type": "Number" },
+        "quantity": { "type": "Number" }
+      },
+      "required": ["productId", "dosageId", "memberId"]
+    },
+    "Notification": {
+      "type": "object",
+      "properties": {
+        "notificationData": { "type": "object" },
+        "userNotifications": { "type": "array" },
+        "generatedBy": { "type": "string" },
+        "successCount": { "type": "Number" },
+        "failureCount": { "type": "Number" }
+      },
+      "required": ["notificationData"]
+    },
+    "Reward-Redeem": {
+      "type": "object",
+      "properties": {
+        "reward": { "type": "string" },
+        "user": { "type": "string" }
+      },
+      "required": ["reward", "user"]
+    },
+    "Reward": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "decription": { "type": "string" },
+        "role": { "type": "string" },
+        "image": { "type": "object" },
+        "points": { "type": "number" }
+      },
+      "required": ["title", "description", "role", "points"]
+    },
+    "Feedback": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "message": { "type": "string" }
+      },
+      "required": ["title", "message"]
+    },
+    "promoCode": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "String", "unique": true },
+        "amount": { "type": "number" },
+        "maxAmount": { "type": "number" },
+        "minAmount": { "type": "number" },
+        "activatedAt": { "type": "date-time" },
+        "expiredAt": { "type": "date-time" },
+        "isDisabled": { "type": "boolean", "default": false },
+        "isDeleted": { "type": "boolean", "default": false },
+        "createdBy": { "type": "Schema.Types.ObjectId", "ref": "member" },
+        "updatedBy": { "type": "Schema.Types.ObjectId", "ref": "member" }
+      },
+      "required": ["name"]
+    }
+  }
+}

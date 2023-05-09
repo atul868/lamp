@@ -1,0 +1,17 @@
+"Instrument","Name=","FLOW RECORDER",,"Serial number=","0",,"Software Version=","V8.11"
+,"MAC Address=","00:0A:8D:03:E5:33",,"Language=","EN",,"Country=","GB",,"Time Zone=","GMT"
+"GroupName","Group 1"
+"FLOW","Low=",0.0,"High=",130.0,"Units=","L/min"
+"PRESSURE","Low=",0.0,"High=",100.0,"Units=","mA"
+"VOLUME","Low=",0.0,"High=",10000.0,"Units=",""
+"Date/Time",,"FLOW","PRESSURE","VOLUME"
+,,"L/min","mA",""
+"26/06/18 13:33:07.875","Batch Start Supervisor"
+"26/06/18 13:33:07.875","Config Revision: 9 : Security Revision: 1"
+"26/06/18 13:33:07.875","File name qwe"
+"26/06/18 13:33:07.875","Site TATA"
+"26/06/18 13:33:10",,">Range",">Range",53.0
+"26/06/18 13:33:15",,">Range",">Range",58.0
+"26/06/18 13:33:19","Batch Stop Supervisor"
+"26/06/18 13:33:19","File name qwe"
+"26/06/18 13:33:19",,">Range",">Range",62.0
